@@ -1,6 +1,9 @@
 //const api_url = "<heroku_app_url>"
 const api_url = "https://teacherstaffapi.herokuapp.com/staff"
 //const api_url = "https://anassk.herokuapp.com/staff"
+const mongoose = require('mongoose');
+
+const api-uri ="mongodb+srv://shiv-nosql:nosql@cluster0.esppv.mongodb.net/project?retryWrites=true&w=majority";
 
 function loadData(records = []) {
 	var table_data = "";
