@@ -8,13 +8,13 @@ function loadData(records = []) {
 		table_data += `<tr>`;
 		table_data += `<td>${records[i].employeeCode}</td>`;
 		table_data += `<td>${records[i].jobTitleName}</td>`;
-		table_data += `<td>${records[i].firstName}</td>`;
+		table_data += `<td>${records[i].name}</td>`;
 		
-		table_data += `<td>${records[i].department}</td>`;
+		table_data += `<td>${records[i].branch}</td>`;
 		
 		table_data += `<td>${records[i].phoneNumber}</td>`;
-		table_data += `<td>${records[i].emailAddress}</td>`;
-		table_data += `<td>${records[i].password}</td>`;
+		table_data += `<td>${records[i].emailID}</td>`;
+		// table_data += `<td>${records[i].password}</td>`;
 		table_data += `<td>`;
 		table_data += `<a href="edit.html?id=${records[i]._id}"><i class="fas fa-edit"></i></a>  <i class="fas fa-trash-alt" onclick=deleteData('${records[i]._id}')></i>`;
 		table_data += `</td>`;
@@ -42,13 +42,13 @@ function getDataById(id) {
 	
 		console.log(data);
 	
-		document.getElementById("id").value = data._id;
+		document.getElementById("_id").value = data._id;
 		document.getElementById("employeeCode").value = data.employeeCode;
-		document.getElementById("firstName").value = data.firstName;
-		document.getElementById("department").value = data.department;
+		document.getElementById("name").value = data.name;
+		document.getElementById("branch").value = data.branch;
 		document.getElementById("jobTitleName").value = data.jobTitleName;
 		document.getElementById("phoneNumber").value = data.phoneNumber;
-		document.getElementById("emailAddress").value = data.emailAddress;
+		document.getElementById("emailID").value = data.emailID;
 		document.getElementById("password").value = data.password;
 		
 		
@@ -59,19 +59,19 @@ function getDataById(id) {
 
 function postData() {
 	
-        var employeeCode = document.getElementById("employeeCode").value;
-	var firstName = document.getElementById("firstName").value;
-	var department = document.getElementById("department").value;
+    var employeeCode = document.getElementById("employeeCode").value;
+	var name = document.getElementById("name").value;
+	var branch = document.getElementById("branch").value;
 	var jobTitleName = document.getElementById("jobTitleName").value;
 	var phoneNumber = document.getElementById("phoneNumber").value;
-	var emailAddress = document.getElementById("emailAddress").value;
+	var emailID = document.getElementById("emailID").value;
 	var password = document.getElementById("password").value;
 	
 	
 	
 	
 	
-	data = {firstName: firstName, phoneNumber: phoneNumber, emailAddress: emailAddress, department: department, employeeCode: employeeCode, jobTitleName: jobTitleName,password:password};
+	data = {name: name, phoneNumber: phoneNumber, emailID: emailID, branch: branch, employeeCode: employeeCode, jobTitleName: jobTitleName,password:password};
 	
 	fetch(api_url, {
 		method: "POST",
@@ -90,18 +90,18 @@ function postData() {
 
 
 function putData() {
-	
+	var _id = document.getElementById("_id").value;
 	var employeeCode = document.getElementById("employeeCode").value;
-	var firstName = document.getElementById("firstName").value;
-	var department = document.getElementById("department").value;
+	var name = document.getElementById("name").value;
+	var branch = document.getElementById("branch").value;
 	var jobTitleName = document.getElementById("jobTitleName").value;
 	var phoneNumber = document.getElementById("phoneNumber").value;
-	var emailAddress = document.getElementById("emailAddress").value;
+	var emailID = document.getElementById("emailID").value;
 	var password = document.getElementById("password").value;
 	
 	
 	
-	data = {_id:_id, jobTitleName: jobTitleName, firstName: firstName,password:password, department: department, employeeCode: employeeCode, emailAddress: emailAddress, phoneNumber: phoneNumber};
+	data = { _id:_id, jobTitleName: jobTitleName, name: name,password:password, branch: branch, employeeCode: employeeCode, emailID: emailID, phoneNumber: phoneNumber , password:password};
 	
 	
 	
@@ -118,6 +118,9 @@ function putData() {
 	.then((data) => { 
 		console.table(data);
 		window.location.href = "table.html";
+	})
+	.catch((err)=>{
+		console.log("Error is " , err)
 	})
 }
 
