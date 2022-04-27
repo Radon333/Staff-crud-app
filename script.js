@@ -1,5 +1,6 @@
 //const api_url = "<heroku_app_url>"
-const api_url = "https://teacherstaffapi.herokuapp.com/staff"
+const api_url = "http://44.200.55.238:8080/staff"
+// const api_url = "https://teacherstaffapi.herokuapp.com/staff"
 //const api_url = "https://anassk.herokuapp.com/staff"
 
 function loadData(records = []) {
